@@ -21,5 +21,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-param-reassign': 'off',
     'no-return-await': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
