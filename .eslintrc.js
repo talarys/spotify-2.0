@@ -19,5 +19,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'no-param-reassign': 'off',
+    'no-return-await': 'off',
   },
 };

@@ -40,6 +40,11 @@ function Sidebar() {
         </Button>
         <hr className="border-t-[0.1px] border-gray-900" />
         {/* {Playlists...} */}
+        <PlaylistItem>Playlist Name...</PlaylistItem>
+        <PlaylistItem>Playlist Name...</PlaylistItem>
+        <PlaylistItem>Playlist Name...</PlaylistItem>
+        <PlaylistItem>Playlist Name...</PlaylistItem>
+        <PlaylistItem>Playlist Name...</PlaylistItem>
       </div>
     </div>
   );
@@ -49,4 +54,8 @@ export default Sidebar;
 
 const Button = tw.button`
 flex items-center space-x-2 hover:text-white
+`;
+
+const PlaylistItem = tw.p`
+  cursor-pointer hover:text-white
 `;

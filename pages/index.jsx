@@ -6,9 +6,10 @@ export default function Home() {
     <div>
       <Head>
         <title>Spotify 2.0</title>
+        <link rel="icon" href="/spotify.svg" />
       </Head>
-      <div>
-        <main>
+      <div className="bg-black h-screen overflow-hidden">
+        <main className="">
           <Sidebar />
           {/* Center */}
         </main>
