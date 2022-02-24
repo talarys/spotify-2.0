@@ -22,5 +22,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'no-return-await': 'off',
     'import/prefer-default-export': 'off',
+    'global-require': 'off',
   },
 };
