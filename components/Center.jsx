@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
@@ -24,9 +24,11 @@ function Center() {
   return (
     <div className="flex-grow text-white">
       <header className="absolute top-5 right-8">
-        <div className="flex items-center space-x-3 bg-black opacity-80 hover:opacity-100 cursor-pointer rounded-full p-1 pr-2">
-          <img className="rounded-full w-10 h-10" src={session?.user.image} />
-          <h2>{session?.user.name}</h2>
+        <div className="flex items-center space-x-1 bg-black opacity-80 hover:opacity-100 cursor-pointer rounded-full p-1 pr-2">
+          <img className="rounded-full w-8 h-8" src={session?.user.image} />
+          <h2 className="font-semibold">
+            {session?.user.name}
+          </h2>
           <ChevronDownIcon className="h-5 w-5" />
         </div>
       </header>
