@@ -23,5 +23,6 @@ module.exports = {
     'no-return-await': 'off',
     'import/prefer-default-export': 'off',
     'global-require': 'off',
+    'jsx-a11y/alt-text': 'off',
   },
 };
