@@ -10,9 +10,9 @@ async function refreshAccessToken(token) {
     const { body: refreshedToken } = await spotifyApi.refreshAccessToken();
     return {
       ...token,
-      accessToken: refreshedToken.accessToken,
-      accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000,
-      refreshToken: refreshedToken.refreshToken ?? token.refreshToken,
+      accessToken: refreshedToken.access_token,
+      accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,
+      refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
     };
   } catch (err) {
     return {
@@ -47,9 +47,7 @@ export default NextAuth({
         };
       }
       // Refresh token if its expired
-      if (Date.now < token.accessTokenExpires) {
-        return token;
-      }
+      if (Date.now() < token.accessTokenExpires) return token;
 
       return await refreshAccessToken(token);
     },
@@ -57,6 +55,7 @@ export default NextAuth({
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.username = token.username;
+      return session;
     },
   },
 });
