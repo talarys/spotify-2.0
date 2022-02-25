@@ -8,13 +8,15 @@ import {
 } from '@heroicons/react/outline';
 
 import { useState, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { useSession } from 'next-auth/react';
 import tw from 'tailwind-styled-components';
 import useSpotify from '../hooks/useSpotify';
+import { playlistIdState } from '../atoms/playlistAtom';
 
 function Sidebar() {
   const [playlists, setPlaylists] = useState([]);
-  const [playlistId, setPlaylistId] = useState(null);
+  const setPlaylistId = useSetRecoilState(playlistIdState);
   const { data: session } = useSession();
   const spotifyApi = useSpotify();
 
@@ -27,7 +29,7 @@ function Sidebar() {
   }, [session, spotifyApi]);
 
   return (
-    <div className=" text-gray-300 p-5 pr-12 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide">
+    <div className=" text-gray-300 p-5 text-sm md:text-base pr-12 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide min-w-[12rem] max-w-[20rem] hidden sm:inline ">
       {/* Spotify Logo */}
       <img
         src="/spotify-white-logo.svg"
