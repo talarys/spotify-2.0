@@ -7,11 +7,32 @@ import {
   HeartIcon,
 } from '@heroicons/react/outline';
 
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import tw from 'tailwind-styled-components';
+import useSpotify from '../hooks/useSpotify';
 
 function Sidebar() {
+  const [playlists, setPlaylists] = useState([]);
+  const [playlistId, setPlaylistId] = useState(null);
+  const { data: session } = useSession();
+  const spotifyApi = useSpotify();
+
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      spotifyApi.getUserPlaylists().then((data) => {
+        setPlaylists(data.body.items);
+      });
+    }
+  }, [session, spotifyApi]);
+
   return (
-    <div className="text-gray-500 p-5 border-r text-sm border-gray-900 overflow-y-scroll h-screen scrollbar-hide">
+    <div className=" text-gray-300 p-5 pr-12 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide">
+      {/* Spotify Logo */}
+      <img
+        src="/spotify-white-logo.svg"
+        className="w-36 h-16 mb-10"
+      />
       <div className="space-y-4">
         <Button>
           <HomeIcon className="h-5 w-5" />
@@ -39,12 +60,15 @@ function Sidebar() {
           <p>Your episodes</p>
         </Button>
         <hr className="border-t-[0.1px] border-gray-900" />
-        {/* {Playlists...} */}
-        <PlaylistItem>Playlist Name...</PlaylistItem>
-        <PlaylistItem>Playlist Name...</PlaylistItem>
-        <PlaylistItem>Playlist Name...</PlaylistItem>
-        <PlaylistItem>Playlist Name...</PlaylistItem>
-        <PlaylistItem>Playlist Name...</PlaylistItem>
+        {playlists.map((playlist) => (
+          <p
+            key={playlist.id}
+            className="cursor-pointer text-white"
+            onClick={() => setPlaylistId(playlist.id)}
+          >
+            {playlist.name}
+          </p>
+        ))}
       </div>
     </div>
   );
@@ -54,8 +78,4 @@ export default Sidebar;
 
 const Button = tw.button`
 flex items-center space-x-2 hover:text-white
-`;
-
-const PlaylistItem = tw.p`
-  cursor-pointer hover:text-white
 `;
