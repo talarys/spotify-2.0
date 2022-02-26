@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
 import { useRecoilValue, useRecoilState } from 'recoil';
+import Link from 'next/link';
 import { playlistIdState, playlistState } from '../atoms/playlistAtom';
 import useSpotify from '../hooks/useSpotify';
 import Songs from './Songs';
@@ -39,17 +40,17 @@ function Center() {
 
   return (
     <div className="flex-grow text-white h-screen overflow-y-scroll scrollbar-hide">
-
-      <header className="absolute top-5 right-8">
-        <div className="flex items-center space-x-1 bg-black opacity-80 hover:bg-gray-900  cursor-pointer rounded-full p-1 pr-2 border border-black">
-          <img className="rounded-full w-6 h-6" src={session?.user.image} />
-          <h2 className="font-semibold">
-            {session?.user.name}
-          </h2>
-          <ChevronDownIcon className="h-5 w-5" />
-        </div>
-      </header>
-
+      <Link href="/login">
+        <header className="absolute top-5 right-8">
+          <div className="flex items-center space-x-1 bg-black opacity-80 hover:bg-gray-900  cursor-pointer rounded-full p-1 pr-2 border border-black">
+            <img className="rounded-full w-6 h-6" src={session?.user.image} />
+            <h2 className="font-semibold">
+              {session?.user.name}
+            </h2>
+            <ChevronDownIcon className="h-5 w-5" />
+          </div>
+        </header>
+      </Link>
       <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white padding-8 p-8`}>
         <img
           className="h-48 w-48 shadow-2xl"
