@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon, UserCircleIcon } from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
@@ -43,7 +43,9 @@ function Center() {
       <Link href="/login">
         <header className="absolute top-5 right-8">
           <div className="flex items-center space-x-1 bg-black opacity-80 hover:bg-gray-900  cursor-pointer rounded-full p-1 pr-2 border border-black">
-            <img className="rounded-full w-6 h-6" src={session?.user.image} />
+            {session.user.image
+              ? <img className="rounded-full w-6 h-6" src={session?.user.image} />
+              : <UserCircleIcon className="w-6 h-6" />}
             <h2 className="font-semibold">
               {session?.user.name}
             </h2>
