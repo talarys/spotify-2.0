@@ -1,10 +1,26 @@
+import { useSetRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import { msToMinsAndSecs } from '../lib/time';
+import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 
 function Song({ track, order }) {
   const spotifyApi = useSpotify();
+  const setCurrentTrackId = useSetRecoilState(currentTrackIdState);
+  const setIsPlaying = useSetRecoilState(isPlayingState);
+
+  const playSong = () => {
+    setCurrentTrackId(track.id);
+    setIsPlaying(true);
+    spotifyApi.play({
+      uris: [track.uri],
+    });
+  };
+
   return (
-    <div className=" px-2 grid grid-cols-2 pl-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400">
+    <div
+      className=" px-2 grid grid-cols-2 pl-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400"
+      onClick={playSong}
+    >
 
       <div className="flex items-center space-x-2">
         <p className="w-7">{order + 1}</p>

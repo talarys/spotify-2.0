@@ -28,5 +28,6 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'no-console': 'off',
     'react/prop-types': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
 };
