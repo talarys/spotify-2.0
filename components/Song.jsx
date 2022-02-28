@@ -1,7 +1,9 @@
 import { useSetRecoilState } from 'recoil';
+import { toast } from 'react-toastify';
 import useSpotify from '../hooks/useSpotify';
 import { msToMinsAndSecs } from '../lib/time';
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Song({ track, order }) {
   const spotifyApi = useSpotify();
@@ -9,11 +11,28 @@ function Song({ track, order }) {
   const setIsPlaying = useSetRecoilState(isPlayingState);
 
   const playSong = () => {
-    setCurrentTrackId(track.id);
-    setIsPlaying(true);
-    spotifyApi.play({
-      uris: [track.uri],
-    });
+    spotifyApi.getMyDevices()
+      .then((data) => {
+        if (!data.body.devices.length) {
+          toast('No devices found', {
+            toastId: 'err',
+            position: 'top-right',
+            autoClose: 1500,
+            closeOnClick: true,
+            pauseOnHover: true,
+            type: 'error',
+            theme: 'dark',
+          });
+        } else {
+          setCurrentTrackId(track.id);
+          setIsPlaying(true);
+          spotifyApi.play({
+            uris: [track.uri],
+          }, (err) => console.log(err));
+        }
+      }, (err) => {
+        console.log('Something went wrong!', err);
+      });
   };
 
   return (
@@ -40,7 +59,6 @@ function Song({ track, order }) {
           {msToMinsAndSecs(track.duration_ms)}
         </p>
       </div>
-
     </div>
   );
 }
