@@ -28,7 +28,7 @@ function Song({ track, order }) {
           setIsPlaying(true);
           spotifyApi.play({
             uris: [track.uri],
-          }, (err) => console.log(err));
+          });
         }
       }, (err) => {
         console.log('Something went wrong!', err);
