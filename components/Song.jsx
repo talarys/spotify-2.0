@@ -37,19 +37,18 @@ function Song({ track, order }) {
 
   return (
     <div
-      className=" px-2 grid grid-cols-2 pl-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400"
+      className="p-4 grid grid-cols-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400"
       onClick={playSong}
     >
-
       <div className="flex items-center space-x-2">
-        <p className="w-7">{order + 1}</p>
+        <p className="pr-2">{order + 1}</p>
         <img
-          className="h-12 w-12 p-1"
+          className="h-16 w-16"
           src={track.album.images[0].url}
         />
         <div>
-          <p className="w-44 lg:w-72 truncate font-semibold text-white">{track.name}</p>
-          <p className="w-44 lg:w-72 truncate text-sm hover:text-white">{track.artists[0].name}</p>
+          <p className="pr-2 font-semibold text-white">{track.name}</p>
+          <p className="text-sm hover:text-white">{track.artists[0].name}</p>
         </div>
       </div>
 
