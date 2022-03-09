@@ -137,12 +137,12 @@ function Player() {
         {isPlaying ? (
           <PauseIcon
             onClick={handlePlayPause}
-            className="button w-14 h-14"
+            className={`button w-14 h-14 ${isPlaying && 'text-green-400'}`}
           />
         ) : (
           <PlayIcon
             onClick={handlePlayPause}
-            className="button w-14 h-14"
+            className={`button w-14 h-14 ${isPlaying && 'text-green-400'}`}
           />
         )}
         <FastForwardIcon onClick={nextSong} className="button" />
