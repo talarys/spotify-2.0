@@ -37,7 +37,7 @@ function Song({ track, order }) {
 
   return (
     <div
-      className="p-4 grid grid-cols-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400"
+      className="p-4 flex md:grid grid-cols-2 rounded hover:bg-[#2A2A30] cursor-pointer text-gray-400"
       onClick={playSong}
     >
       <div className="flex items-center space-x-2">
