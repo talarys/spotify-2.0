@@ -8,7 +8,7 @@ function login({ providers }) {
         <div key={provider.name}>
           <button
             type="button"
-            className="bg-[#18D860] text-white p-5 rounded-full hover:scale-110 transition ease-in"
+            className="bg-[#18D860] text-white p-5 rounded-xl hover:scale-110 transition ease-in"
             onClick={() => signIn(provider.id, { callbackUrl: '/' })}
           >
             Login with
@@ -17,15 +17,6 @@ function login({ providers }) {
           </button>
         </div>
       ))}
-      {/* temp button */}
-      <button
-        className="text-white"
-        type="button"
-        onClick={() => signOut()}
-      >
-        Logout
-
-      </button>
     </div>
   );
 }
