@@ -14,15 +14,7 @@ function Song({ track, order }) {
     spotifyApi.getMyDevices()
       .then((data) => {
         if (!data.body.devices.length) {
-          toast('No devices found', {
-            toastId: 'err',
-            position: 'top-right',
-            autoClose: 1500,
-            closeOnClick: true,
-            pauseOnHover: true,
-            type: 'error',
-            theme: 'dark',
-          });
+          toast.error('No devices found');
         } else {
           setCurrentTrackId(track.id);
           setIsPlaying(true);

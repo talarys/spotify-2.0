@@ -8,7 +8,15 @@ import Player from '../components/Player';
 export default function Home() {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer
+        toastId="err"
+        position="top-right"
+        autoClose={1500}
+        closeOnClick
+        pauseOnHover
+        type="error"
+        theme="dark"
+      />
       <Head>
         <title>Spotify 2.0</title>
         <link rel="icon" href="/spotify.svg" />
