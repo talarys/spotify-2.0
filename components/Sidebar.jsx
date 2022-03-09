@@ -32,7 +32,7 @@ function Sidebar() {
     <div className=" text-gray-300 p-5 text-sm md:text-base pr-12 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide min-w-[12rem] max-w-[20rem] hidden sm:inline ">
       {/* Spotify Logo */}
       <img
-        src="/spotify-white-logo.svg"
+        src="/spotify-logo.svg"
         className="w-36 h-16 mb-10"
       />
       <div className="space-y-4">
