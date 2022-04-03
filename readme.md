@@ -1,4 +1,4 @@
-# Spotify Clone Next.js + Tailwind CSS\
+# Spotify Clone Next.js + Tailwind CSS
 
 This is a spotify clone build with next.js 12 and TailwindCSS as a learning/portfolio project.
 
@@ -12,7 +12,7 @@ Live Demo link: https://spotify-2-0-black.vercel.app
 ### Desktop view
 ![Desktop](./preview/desktop.png)
 
-### Table view
+### Tablet view
 ![Desktop](./preview/tablet.png)
 
 ### Phone view
